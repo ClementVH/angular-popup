@@ -1,0 +1,30 @@
+{
+  "name": "angular-popup",
+  "version": "0.0.1",
+  "description": "Angular popup module",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ClementVH/angular-popup.git"
+  },
+  "keywords": [
+    "angular",
+    "popup",
+    "module"
+  ],
+  "author": {
+    "name": "Clément Van Hecke",
+    "email": "clement.vanhecke@gmail.com",
+    "url": "https://github.com/ClementVH"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/ClementVH/angular-popup/blob/master/LICENSE"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/ClementVH/angular-popup/issues"
+  },
+  "homepage": "https://github.com/ClementVH/angular-popup#readme"
+}
