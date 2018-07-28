@@ -1,5 +1,5 @@
 {
-  "name": "angular-popup",
+  "name": "@clementvh/angular-popup",
   "version": "0.0.1",
   "description": "Angular popup module",
   "main": "src/popup.module.ts",
@@ -30,7 +30,7 @@
   "types": "index.d.ts",
   "dependencies": {
     "@angular/core": ">=4.0.0",
-    "@angular/common": "^4.0.0",
+    "@angular/common": ">=4.0.0",
     "@angular/platform-browser": ">=4.0.0",
     "rxjs": ">=5.1.0"
   }
