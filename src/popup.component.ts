@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ComponentFactoryResolver, ComponentFactory } from '@angular/core';
+import { Component, OnInit, ViewChild, ComponentFactoryResolver, ComponentFactory, ComponentRef } from '@angular/core';
 import { PopupService } from './popup.service';
 import { PopupDirective } from './popup.directive';
 import { HtmlPopupItem } from './items/html-popup-item';
@@ -6,11 +6,12 @@ import { PopupItem } from './items/popup-item';
 import { IframePopupItem } from './items/iframe-popup-item';
 import { IframeComponent } from './iframe/iframe.component';
 import { ConfirmPopupItem } from './items/confirm-popup-item';
+// import { ComponentRef } from "@angular/core/src/linker/component_factory"
 
 @Component({
   selector: 'ng-popup',
   templateUrl: './popup.component.html',
-  styleUrls: ['./popup.component.sass']
+  styleUrls: ['./popup.component.css']
 })
 export class PopupComponent implements OnInit {
 

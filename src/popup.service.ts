@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { PopupItem } from './items/popup-item';
 import { IframePopupItem } from './items/iframe-popup-item';
 import { ConfirmPopupItem } from './items/confirm-popup-item';
