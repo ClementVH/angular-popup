@@ -1,6 +1,6 @@
 {
   "name": "@clementvh/angular-popup",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Angular popup module",
   "main": "public_api.ts",
   "scripts": {
