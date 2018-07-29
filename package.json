@@ -5,7 +5,9 @@
   "main": "public_api.ts",
   "scripts": {
     "build": "ng-packagr -p package.json",
-    "push-version": "npm version patch && git push",
+    "version-patch": "npm version patch && git push",
+    "version-minor": "npm version patch && git push",
+    "version-major": "npm version major && git push",
     "copy-assets": "cp -R src/assets/ dist",
     "publish": "cd dist && npm publish && cd .."
   },
