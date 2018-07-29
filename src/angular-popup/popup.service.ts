@@ -5,6 +5,7 @@ import { PopupItem } from './items/popup-item';
 import { IframePopupItem } from './items/iframe-popup-item';
 import { ConfirmPopupItem } from './items/confirm-popup-item';
 import { HtmlPopupItem } from './items/html-popup-item';
+import { PopupOptions } from './popup-options.model';
 
 @Injectable()
 export class PopupService {
@@ -14,17 +15,17 @@ export class PopupService {
 
   constructor() {}
 
-  openHtml(component: Type<any>, options: any = {}) {
+  openHtml(component: Type<any>, options: PopupOptions = {}) {
     let htmlPopupItem = new HtmlPopupItem(component, options);
     this.popupSource.next(htmlPopupItem);
   }
 
-  openIframe(url: string, options: any = {}) {
+  openIframe(url: string, options: PopupOptions = {}) {
     let iframePopupItem = new IframePopupItem(url, options);
     this.popupSource.next(iframePopupItem);
   }
 
-  openConfirm(component: Type<any>, options: any = {}) {
+  openConfirm(component: Type<any>, options: PopupOptions = {}) {
     let confirmPopupItem = new ConfirmPopupItem(component, options);
     this.popupSource.next(confirmPopupItem);
   }
