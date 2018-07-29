@@ -12,7 +12,7 @@ $ npm install @clementvh/angular-popup
 
 ## Basic Usage
 
-### Add PopupModule in your angular root module :
+### Add PopupModule and your component in your angular root module :
 
 ```ts
 import { NgModule } from '@angular/core';
@@ -30,6 +30,7 @@ import { AppComponent } from './app.component';
   declarations: [
     AppComponent
   ],
+  entryComponents: [MyComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
