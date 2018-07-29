@@ -6,7 +6,6 @@ import { PopupItem } from './items/popup-item';
 import { IframePopupItem } from './items/iframe-popup-item';
 import { IframeComponent } from './iframe/iframe.component';
 import { ConfirmPopupItem } from './items/confirm-popup-item';
-// import { ComponentRef } from "@angular/core/src/linker/component_factory"
 
 @Component({
   selector: 'ng-popup',
@@ -19,13 +18,15 @@ export class PopupComponent implements OnInit {
 
   isOpen = false;
   isConfirm = false;
+  isIframe = false;
 
   options: any = {};
   default_options = {
     id: '',
     dismissable: true,
     cancelText: 'Cancel',
-    confirmText: 'Confirm'
+    confirmText: 'Confirm',
+    showClose: true
   }
 
   constructor(public popup: PopupService, private componentFactoryResolver: ComponentFactoryResolver) { }
@@ -61,6 +62,8 @@ export class PopupComponent implements OnInit {
 
     let componentRef = this.openPopup(componentFactory, iframePopupItem.options);
     (<IframeComponent>componentRef.instance).url = iframePopupItem.url;
+
+    this.isIframe = true;
   }
 
   openConfirm(confirmPopupItem: ConfirmPopupItem) {
@@ -105,6 +108,7 @@ export class PopupComponent implements OnInit {
 
     this.isOpen = false;
     this.isConfirm = false;
+    this.isIframe = true;
   }
 
 }

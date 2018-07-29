@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { PopupService } from '../angular-popup/popup.service';
-import { HtmlPopupItem } from '../angular-popup/items/html-popup-item';
 import { TotoComponent } from 'src/common/toto/toto.component';
-import { IframePopupItem } from '../angular-popup/items/iframe-popup-item';
-import { ConfirmPopupItem } from '../angular-popup/items/confirm-popup-item';
 
 @Component({
   selector: 'app-root',
@@ -17,32 +14,30 @@ export class AppComponent {
   ngOnInit() {}
 
   openHtml() {
-    this.popup.openHtml(new HtmlPopupItem(TotoComponent, {
+    this.popup.openHtml(TotoComponent, {
       id: 'toto-popup',
       dismissable: false
-    }));
+    });
   }
 
   openIframe() {
-    this.popup.openIframe(new IframePopupItem('https://weathermap.netatmo.com'));
+    this.popup.openIframe('https://en.wikipedia.org/wiki/Richard_Feynman', {
+      id: 'iframe-popup',
+      showClose: false
+    });
   }
 
-  confirm = () => {
-    console.log('Confirm', this);
-  }
-
-  cancel = () => {
-    console.log('Cancel', this);
-  }
+  confirm = () => console.log('Confirm', this);
+  cancel = () => console.log('Cancel', this);
 
   openConfirm() {
-    this.popup.openConfirm(new ConfirmPopupItem(TotoComponent, {
+    this.popup.openConfirm(TotoComponent, {
       id: 'confirm-popup',
       confirm: this.confirm,
       cancel: this.cancel,
       confirmText: 'Ok',
       cancelText: 'Not Ok'
-    }));
+    });
   }
 
   close() {

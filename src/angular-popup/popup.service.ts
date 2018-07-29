@@ -1,8 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Type } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
+
 import { PopupItem } from './items/popup-item';
 import { IframePopupItem } from './items/iframe-popup-item';
 import { ConfirmPopupItem } from './items/confirm-popup-item';
+import { HtmlPopupItem } from './items/html-popup-item';
 
 @Injectable()
 export class PopupService {
@@ -12,15 +14,18 @@ export class PopupService {
 
   constructor() {}
 
-  openHtml(htmlPopupItem: PopupItem) {
+  openHtml(component: Type<any>, options: any = {}) {
+    let htmlPopupItem = new HtmlPopupItem(component, options);
     this.popupSource.next(htmlPopupItem);
   }
 
-  openIframe(iframePopupItem: IframePopupItem) {
+  openIframe(url: string, options: any = {}) {
+    let iframePopupItem = new IframePopupItem(url, options);
     this.popupSource.next(iframePopupItem);
   }
 
-  openConfirm(confirmPopupItem: ConfirmPopupItem) {
+  openConfirm(component: Type<any>, options: any = {}) {
+    let confirmPopupItem = new ConfirmPopupItem(component, options);
     this.popupSource.next(confirmPopupItem);
   }
 
