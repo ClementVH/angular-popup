@@ -4,9 +4,7 @@ import { PopupItem } from './items/popup-item';
 import { IframePopupItem } from './items/iframe-popup-item';
 import { ConfirmPopupItem } from './items/confirm-popup-item';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class PopupService {
 
   private popupSource = new Subject<PopupItem>();
