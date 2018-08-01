@@ -36,6 +36,14 @@ import { AppComponent } from './app.component';
 export class AppModule { }
 ```
 
+### Insert the popup component into your root component
+
+```html
+<ng-popup></ng-popup>
+
+<h1>App Component</h1>
+```
+
 ### Inject the PopupService into a component :
 
 ```ts
