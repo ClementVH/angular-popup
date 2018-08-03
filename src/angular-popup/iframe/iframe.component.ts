@@ -1,14 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
+import { PopupService } from '../popup.service';
 
 @Component({
   selector: 'app-iframe',
   templateUrl: './iframe.component.html'
 })
-export class IframeComponent implements OnInit {
+export class IframeComponent {
 
   url: string;
 
-  constructor() { }
+  @ViewChild('iframe') iframe: ElementRef;
 
-  ngOnInit() {}
+  constructor(private popup: PopupService) {}
+
+  load(event) {
+    this.popup.dispatchLoadEvent();
+  }
 }

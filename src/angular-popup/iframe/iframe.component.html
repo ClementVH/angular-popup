@@ -1,1 +1,1 @@
-<iframe [src]="url | safe" *ngIf="url" frameborder="0"></iframe>
+<iframe #iframe (load)="load()" [src]="url | safe" *ngIf="url" frameborder="0"></iframe>

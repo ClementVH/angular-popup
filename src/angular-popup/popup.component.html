@@ -2,9 +2,11 @@
 
   <div class="app-popup-container" [ngClass]="options.id">
 
+    <div class="app-popup-spinner" *ngIf="isOpen && isIframe && options.spin && spinning"></div>
+
     <div class="app-popup-close" (click)="close()" *ngIf="options.showClose"></div>
 
-    <div class="app-popup-content">
+    <div class="app-popup-content" [ngClass]="{'spin': isOpen && isIframe && options.spin && spinning}">
 
       <ng-template popup-host></ng-template>
 

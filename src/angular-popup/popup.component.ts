@@ -2,10 +2,10 @@ import { Component, OnInit, ViewChild, ComponentFactoryResolver, ComponentFactor
 import { PopupService } from './popup.service';
 import { PopupDirective } from './popup.directive';
 import { HtmlPopupItem } from './items/html-popup-item';
-import { PopupItem } from './items/popup-item';
 import { IframePopupItem } from './items/iframe-popup-item';
 import { IframeComponent } from './iframe/iframe.component';
 import { ConfirmPopupItem } from './items/confirm-popup-item';
+import { IPopupItem } from './items/popup-item';
 
 @Component({
   selector: 'ng-popup',
@@ -19,6 +19,7 @@ export class PopupComponent implements OnInit {
   isOpen = false;
   isConfirm = false;
   isIframe = false;
+  spinning = false;
 
   options: any = {};
   default_options = {
@@ -26,27 +27,29 @@ export class PopupComponent implements OnInit {
     dismissable: true,
     cancelText: 'Cancel',
     confirmText: 'Confirm',
-    showClose: true
+    showClose: true,
+    spin: true,
   }
 
   constructor(public popup: PopupService, private componentFactoryResolver: ComponentFactoryResolver) { }
 
   ngOnInit() {
-    this.popup.popupSource$.subscribe(this.handleEvent);
+    this.popup.popupSource$.subscribe(this.handleOpenEvent);
+    this.popup.iframeLoadSource$.subscribe(this.handleLoadEvent);
   }
 
-  handleEvent = (popuItem: PopupItem) => {
-    if (!popuItem)
+  handleOpenEvent = (popupItem: IPopupItem) => {
+    if (!popupItem)
       this.close();
 
-    else if (popuItem.type === 'html-popup')
-      this.openHtml(<HtmlPopupItem> popuItem);
+    else if (popupItem.type === 'html-popup')
+      this.openHtml(<HtmlPopupItem> new HtmlPopupItem(popupItem));
 
-    else if (popuItem.type === 'confirm-popup')
-      this.openConfirm(<ConfirmPopupItem> popuItem);
+    else if (popupItem.type === 'confirm-popup')
+      this.openConfirm(<ConfirmPopupItem> new ConfirmPopupItem(popupItem));
 
-    else if (popuItem.type === 'iframe-popup')
-      this.openIframe(<IframePopupItem> popuItem);
+    else if (popupItem.type === 'iframe-popup')
+      this.openIframe(<IframePopupItem> new IframePopupItem(popupItem));
 
     return;
   }
@@ -81,8 +84,16 @@ export class PopupComponent implements OnInit {
     let default_options = JSON.parse(JSON.stringify(this.default_options));
     this.options = Object.assign(default_options, options);
 
+    if (this.options.spin)
+      this.spinning = true;
+
     let viewContainerRef = this.appPopup.viewContainerRef;
     return viewContainerRef.createComponent(componentFactory);
+  }
+
+  handleLoadEvent = () => {
+    if (this.options.spin)
+      this.spinning = false;
   }
 
   dismiss(event) {
@@ -108,7 +119,8 @@ export class PopupComponent implements OnInit {
 
     this.isOpen = false;
     this.isConfirm = false;
-    this.isIframe = true;
+    this.isIframe = false;
+    this.spinning = false;
   }
 
 }
