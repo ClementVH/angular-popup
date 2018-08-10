@@ -6,6 +6,8 @@ export interface IPopupItem {
     component?: Type<any>;
     options: PopupOptions;
     url?: string;
+    title?: string;
+    text?: string;
 }
 
 export abstract class PopupItem implements IPopupItem {
@@ -13,6 +15,8 @@ export abstract class PopupItem implements IPopupItem {
     component?: Type<any>;
     options: PopupOptions;
     url?: string;
+    title?: string;
+    text?: string;
 
     constructor(popupItem: IPopupItem) {
         Object.assign(this, popupItem);

@@ -13,7 +13,7 @@ export class IframeComponent {
 
   constructor(private popup: PopupService) {}
 
-  load(event) {
+  load() {
     this.popup.dispatchLoadEvent();
   }
 }

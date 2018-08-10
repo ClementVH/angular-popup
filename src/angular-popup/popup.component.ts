@@ -6,6 +6,7 @@ import { IframePopupItem } from './items/iframe-popup-item';
 import { IframeComponent } from './iframe/iframe.component';
 import { ConfirmPopupItem } from './items/confirm-popup-item';
 import { IPopupItem } from './items/popup-item';
+import { ConfirmComponent } from './confirm/confirm.component';
 
 @Component({
   selector: 'ng-popup',
@@ -19,12 +20,15 @@ export class PopupComponent implements OnInit {
   isOpen = false;
   isConfirm = false;
   isIframe = false;
+  isHtml = false;
   spinning = false;
 
   options: any = {};
   default_options = {
     id: '',
     dismissable: true,
+    title: 'Title',
+    text: 'Text',
     cancelText: 'Cancel',
     confirmText: 'Confirm',
     showClose: true,
@@ -58,6 +62,8 @@ export class PopupComponent implements OnInit {
     let componentFactory = this.componentFactoryResolver.resolveComponentFactory(htmlPopupItem.component);
 
     this.openPopup(componentFactory, htmlPopupItem.options);
+
+    this.isHtml = true;
   }
 
   openIframe(iframePopupItem: IframePopupItem) {
@@ -72,7 +78,9 @@ export class PopupComponent implements OnInit {
   openConfirm(confirmPopupItem: ConfirmPopupItem) {
     let componentFactory = this.componentFactoryResolver.resolveComponentFactory(confirmPopupItem.component);
 
-    this.openPopup(componentFactory, confirmPopupItem.options);
+    let componentRef = this.openPopup(componentFactory, confirmPopupItem.options);
+    (<ConfirmComponent>componentRef.instance).title = confirmPopupItem.title;
+    (<ConfirmComponent>componentRef.instance).text = confirmPopupItem.text;
 
     this.isConfirm = true;
   }
@@ -120,6 +128,7 @@ export class PopupComponent implements OnInit {
     this.isOpen = false;
     this.isConfirm = false;
     this.isIframe = false;
+    this.isHtml = false;
     this.spinning = false;
   }
 

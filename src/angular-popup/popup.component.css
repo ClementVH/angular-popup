@@ -14,7 +14,7 @@
     position: relative;
     min-width: 300px;
     max-width: 80vw;
-    min-height: 400px;
+    min-height: 250px;
     max-height: 80vh;
     background-color: white;
     border-radius: 3px;
@@ -45,6 +45,10 @@
     overflow-y: auto;
 }
 
+#app-popup.confirm .app-popup-container {
+    max-width: 500px;
+}
+
 #app-popup .app-popup-container .app-popup-content.spin {
     filter: blur(3px);
 }
@@ -54,6 +58,7 @@
     height: 60px;
     display: none;
     margin-top: auto;
+    border-top: 1px solid;
 }
 
 #app-popup .app-popup-container .app-popup-confirm > p {

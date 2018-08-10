@@ -81,14 +81,15 @@ openHtml(component: Type<any>, options: any = {}): void;
 ```
 
 ### openConfirm()
-Open a popup with the given component inside, and two buttons at the bottom 'Cancel' and 'Confirm'
+Open a popup confirm with the given title and text and two buttons at the bottom 'Cancel' and 'Confirm'
 
 ```ts
 /**
- * @param {Type<any>} component The component to instatiate in the popup.
+ * @param {string} title The popup's title.
+ * @param {string} text The popup(s content text.
  * @param {Object} options Options given to the popup.
  */
-openConfirm(component: Type<any>, options: any = {}): void;
+openConfirm(title: string, text: string, options: any = {}): void;
 ```
 
 ### openIframe()

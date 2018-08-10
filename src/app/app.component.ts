@@ -31,12 +31,14 @@ export class AppComponent {
   cancel = () => console.log('Cancel', this);
 
   openConfirm() {
-    this.popup.openConfirm(TotoComponent, {
-      id: 'confirm-popup',
-      confirm: this.confirm,
-      cancel: this.cancel,
-      confirmText: 'Ok',
-      cancelText: 'Not Ok'
+    this.popup.openConfirm('This is title',
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+      {
+        id: 'confirm-popup',
+        confirm: this.confirm,
+        cancel: this.cancel,
+        confirmText: 'Ok',
+        cancelText: 'Not Ok'
     });
   }
 

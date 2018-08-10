@@ -19,8 +19,8 @@ export class PopupService {
     this.popupSource.next({component, options, type: 'html-popup'});
   }
 
-  openConfirm(component: Type<any>, options: PopupOptions = {}) {
-    this.popupSource.next({component, options, type: 'confirm-popup'});
+  openConfirm(title: string, text: string, options: PopupOptions = {}) {
+    this.popupSource.next({title, text, options, type: 'confirm-popup'});
   }
 
   openIframe(url: string, options: PopupOptions = {}) {

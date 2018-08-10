@@ -4,15 +4,24 @@ import { PopupComponent } from './popup.component';
 import { PopupService } from './popup.service';
 import { PopupDirective } from './popup.directive';
 import { IframeComponent } from './iframe/iframe.component';
-import { SafePipe } from './iframe/safe.pipe';
+import { UrlSafePipe } from './iframe/url-safe.pipe';
+import { ConfirmComponent } from './confirm/confirm.component';
+import { HtmlSafePipe } from './confirm/html-safe.pipe';
 
 @NgModule({
   imports: [
     CommonModule
   ],
   providers: [PopupService],
-  declarations: [PopupComponent, PopupDirective, IframeComponent, SafePipe],
-  entryComponents: [IframeComponent],
+  declarations: [
+    PopupComponent,
+    PopupDirective,
+    IframeComponent,
+    ConfirmComponent,
+    UrlSafePipe,
+    HtmlSafePipe
+  ],
+  entryComponents: [IframeComponent, ConfirmComponent],
   exports: [PopupComponent]
 })
 export class PopupModule {}
